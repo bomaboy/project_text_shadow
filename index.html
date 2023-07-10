@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+      <link
+         rel="stylesheet"
+         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+      />
+   </head>
+   <body>
+      <div class="hero">
+     
+         <h1 contenteditable=""> 🔥 WOAH!</h1>
+      </div>
+
+      <style>
+         /* body {
+            margin: 0%;
+            padding: 0%;
+        
+            height: 100vh;
+            width: 100%;
+         } */
+
+         html {
+            color: black;
+            font-family: sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+         }
+
+         .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            min-height: 100vh;
+            width: 70vw;
+            color: black;
+            /* border: 1px solid black; */
+         }
+
+         .hero i {
+            color: orangered;
+            font-size: 100px;
+             /* text-shadow: 10px 10px 0 rgba(0, 0, 0, 1); */
+         }
+
+         h1 {
+            text-shadow: 10px 10px 0 rgba(0, 0, 0, 1);
+            font-size: 100px;
+         }
+      </style>
+
+      <script>
+         const hero = document.querySelector(".hero");
+         const text = hero.querySelector("h1");
+         const walk = 100;
+
+         function shadow(e) {
+            // const width = hero.offsetWidth;
+            //  const height = hero.offsetHeight;
+
+            // ...........OR.............
+
+            const { offsetWidth: width, offsetHeight: height } = hero;
+            let { offsetX: x, offsetY: y } = e;
+
+            if (this !== e.target) {
+               x = x + e.target.offsetLeft;
+               y = y + e.target.offsetTop;
+            }
+
+            const xwalk = Math.round((x / width * walk) - (walk / 2));
+            const ywalk = Math.round((y / height * walk) - (walk / 2));
+            
+            text.style.textShadow = `
+            ${xwalk}px ${ywalk}px 0 rgba(255,0,255,0.7),
+            ${xwalk * -1}px ${ywalk}px 0 rgba(0,255,255,0.7),
+             ${ywalk }px ${ywalk * -1}px 0 rgba(0,255,0,0.7),
+              ${ywalk * -1}px ${xwalk}px 0 rgba(0,0,255,0.7)
+            `;
+
+         }
+
+         hero.addEventListener("mousemove", shadow);
+      </script>
+   </body>
+</html>
